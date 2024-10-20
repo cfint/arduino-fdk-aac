@@ -137,7 +137,7 @@ amm-info@iis.fraunhofer.de
 
 #ifdef ESP32
  #include "esp_heap_caps.h"
-  void *ps_calloc(size_t n, size_t size);
+  // void *ps_calloc(size_t n, size_t size);
 #endif
 
 
@@ -198,7 +198,8 @@ char *FDKstrncpy(char *dest, const char *src, UINT n) {
 		LOG_FDK(FDKDebug,"FDKcallocExt(%d,%d,%d)", n, size, alignment);
     UCHAR alignment_effective = alignment;
 	  void *ptr = nullptr;
-    ptr = ps_calloc(n, size);
+    // ptr = ps_calloc(n, size);
+    ptr = heap_caps_calloc(n, size, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
     if (ptr == nullptr){
       if (alignment%4 == 0){
         alignment_effective = 4;
