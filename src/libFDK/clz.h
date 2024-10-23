@@ -106,6 +106,10 @@ amm-info@iis.fraunhofer.de
 #include "libFDK/FDK_archdef.h"
 #include "libSYS/machine_type.h"
 
+#if defined(__xtensa__)
+#include "libFDK/xtensa/clz_xtensa.h"
+#endif
+
 // #if defined(__arm__)
 // #include "arm/clz_arm.h"
 
